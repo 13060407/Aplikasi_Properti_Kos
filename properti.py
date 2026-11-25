@@ -10,4 +10,4 @@ class Properti:
         print("ID Properti :", self.id_properti)
         print("Nama        :", self.nama)
         print("Alamat      :", self.alamat)
-        print("Harga       : Rp", format(self.harga, ",").replace(",", "."))
+        print("Harga       : Rp", self.harga)

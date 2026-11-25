@@ -6,19 +6,29 @@ class Penyewa:
         self.no_hp = no_hp
         self.kamar = None
 
-    def _set_kamar(self, kamar):
-        self.kamar = kamar
-
     def menempati_kamar(self, kamar):
-        return kamar.ditempati_oleh(self)
+        if self.kamar is not None:
+            print("Penyewa sudah memiliki kamar!")
+            return
+
+        if kamar.penyewa is not None:
+            print("Kamar sudah ditempati penyewa lain!")
+            return
+
+        self.kamar = kamar
+        kamar.penyewa = self
+
+        print(self.nama, "berhasil menempati kamar",
+              kamar.nomor_kamar)
 
     def tampilkan_info(self):
         print("\n===== DATA PENYEWA =====")
-        print("ID Penyewa  :", self.id_penyewa)
-        print("Nama        :", self.nama)
-        print("No HP       :", self.no_hp)
+        print("ID Penyewa :", self.id_penyewa)
+        print("Nama       :", self.nama)
+        print("No HP      :", self.no_hp)
 
         if self.kamar is not None:
-            print("Nomor Kamar :", self.kamar.nomor_kamar)
+            print("Kamar      :", self.kamar.nomor_kamar)
         else:
-            print("Kamar       : Belum menempati kamar")
+            print("Kamar      : Belum menempati kamar")
+
